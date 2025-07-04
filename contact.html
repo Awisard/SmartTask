@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-amber-50 font-serif mx-4">
+    <div class="">
+        <h2 class="text-3xl font-bold text-blue-700 my-4">Get in Touch</h2>
+        <p class="mb-4 text-gray-500">Have Questions or need help? we'd love to hear from you.</p>
+        <p class="mb-2"><strong>Phone: +2348186464544, +2348123773769</strong> </p>
+        <p class="mb-2"><strong>Email: contact@smarttask.com</strong></p>
+        <p class="mb-2"><strong>Address: Western By-pass, Minna. Niger State.</strong> </p>
+        
+    </div>
+    <form onsubmit="submitContact(event)" action="name" class="bg-blue-50 p-6 rounded shadow space-y-4" >
+        <div>
+            <label for="name" class="block text-sm font-semibold">Name:</label>
+            <input type="text" required class="w-full p-2 mt-1 rounded border border-gray-300">
+        </div>
+        <div>
+            <label for="email" class="block text-sm font-semibold">Email:</label>
+            <input type="text" required class="w-full p-2 mt-1 rounded border border-gray-300">
+        </div>
+        <div>
+            <label for="message" class="block text-sm font-semibold">Message</label>
+            <textarea name="message" id="message" required class="display:none w-full p-2 mt-1 rounded border border-gray-300"></textarea>
+        </div>
+        <button class="bg-blue-800 rounded-lg text-white px-6 py-3 font-semibold hover:bg-blue-400 transition">Send Message</button>
+        <p class="text-green-600 italic">Your Message has been sent successfully!</p>
+    </form>
+ </body>
+</html>

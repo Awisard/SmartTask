@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Register Page</title>
+  </head>
+  <body class="bg-[#E8E8E8] mt-40">
+    <div class="flex justify-center items-center flex-col md:flex md:justify-center md:items-center md:flex-col md:mt-20 lg:flex lg:justify-center lg:items-center lg:flex-col">
+      <h2 class="mt-8 text-center text-4xl font-bold font-sans lg:text-3 md:py-2">
+        Get Started <span class="text-[#3b38d4]" id="user-name"></span>
+      </h2>
+      <p class="text-gray-500 text-center mt-2 mb-5">
+        Let's get you started
+      </p>
+      <form id="input-form">
+        <input
+          required
+          class="p-3 my-2 w-full rounded-xl bg-white text-sm accent-blue-700 shadow-lg"
+          type="name"
+          name="Name"
+          placeholder="Enter your Full-Name"
+          id="name-input"/>
+        <input
+          required
+          class="p-3 my-2 w-full rounded-xl bg-white text-sm accent-blue-700 shadow-lg"
+          type="email"
+          name="Email"
+          placeholder="Enter your email"
+          id="name-input"/>
+          <br/>
+        <div class="flex items-center relative" id="password-container">
+          <input
+            required
+            class="p-3 my-3 w-full rounded-xl bg-white text-sm accent-blue-700 shadow-lg"
+            type="password"
+            name="password"
+            placeholder="Create a password"
+            id="password-input"
+          />
+          <span
+            class="absolute right-3 cursor-pointer "
+            id="toggle-password-visibility"
+            ><i class="fa-solid fa-eye-slash"></i></span
+          ><br />
+        </div>
+
+        <div class="flex items-center relative" id="password-container">
+          <input
+            required
+            class="p-3 mt-2 w-full rounded-xl bg-white text-sm accent-blue-700 shadow-lg"
+            type="password"
+            name="password"
+            placeholder="Confirm password"
+            id="confirm-password-input"
+          />
+          <span
+            class="absolute right-3 cursor-pointer"
+            id="toggle-confirmPassword-visibility"
+            ><i class="fa-solid fa-eye-slash"></i></span
+          >
+          <br />
+        </div>
+
+        <p class="text-sm text-red-500" id="error-message"></p>
+      </form>
+      <button
+        class="bg-[#3b38d4] text-white w-90 rounded-md py-2 mt-5 cursor-pointer lg:py-3 lg:text-xl hover:bg-[#3b38d4]"
+        type="button"
+        id="register-button"
+      >
+        Register &rarr;
+      </button>
+      <p class="text-center mt-2 text-gray-500 text-sm">
+        Already have an account?
+        <a class="text-[#3b38d4] underline lg:font-bold" href="./signup.html"
+          >Login</a
+        >
+      </p>
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const nameInput = document.getElementById("name-input");
+  const emailInput = document.querySelector('input[type="email"]');
+  const passwordInput = document.getElementById("password-input");
+  const confirmPasswordInput = document.getElementById("confirm-password-input");
+  const errorMessage = document.getElementById("error-message");
+  const registerButton = document.getElementById("register-button");
+  const userNameDisplay = document.getElementById("user-name");
+
+  const togglePasswordBtn = document.getElementById("toggle-password-visibility");
+  const toggleConfirmPasswordBtn = document.getElementById("toggle-confirmPassword-visibility");
+
+  togglePasswordBtn.addEventListener("click", () => {
+    const type = passwordInput.type === "password" ? "text" : "password";
+    passwordInput.type = type;
+    togglePasswordBtn.innerHTML =
+      type === "password"
+        ? '<i class="fa-solid fa-eye-slash"></i>'
+        : '<i class="fa-solid fa-eye"></i>';
+  });
+
+  toggleConfirmPasswordBtn.addEventListener("click", () => {
+    const type = confirmPasswordInput.type === "password" ? "text" : "password";
+    confirmPasswordInput.type = type;
+    toggleConfirmPasswordBtn.innerHTML =
+      type === "password"
+        ? '<i class="fa-solid fa-eye-slash"></i>'
+        : '<i class="fa-solid fa-eye"></i>';
+  });
+
+  
+  registerButton.addEventListener("click", function () {
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+    
+    errorMessage.textContent = "";
+
+    if (!name || !email || !password || !confirmPassword) {
+      errorMessage.textContent = "All fields are required.";
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      errorMessage.textContent = "Passwords do not match.";
+      return;
+    }
+
+    
+    userNameDisplay.textContent = name;
+
+    console.log("Registration successful!");
+    console.log({ name, email, password });
+
+    document.getElementById("input-form").reset();
+  });
+});
+</script>
+</body>
+</html>
